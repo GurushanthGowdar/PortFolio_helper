@@ -1,9 +1,7 @@
-
 import { AiFillGithub, AiOutlineLink } from "react-icons/ai";
-import { FaCode, FaUser, FaLaptopCode, FaMobile, FaHeartbeat } from "react-icons/fa";
+import { FaUser, FaLaptopCode, FaMobile, FaHeartbeat, FaCode } from "react-icons/fa";
 
 const WorksCard = (props) => {
-
 
   const getCategoryIcon = (category) => {
     const icons = {
@@ -26,8 +24,6 @@ const WorksCard = (props) => {
   return (
     <div
       className="group bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 overflow-hidden border border-gray-700"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
       data-aos="fade-up"
       data-aos-delay={props.index * 100}
     >
