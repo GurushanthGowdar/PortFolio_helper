@@ -1,9 +1,9 @@
-import { useState } from "react";
+
 import { AiFillGithub, AiOutlineLink } from "react-icons/ai";
 import { FaCode, FaUser, FaLaptopCode, FaMobile, FaHeartbeat } from "react-icons/fa";
 
 const WorksCard = (props) => {
-  const [isHovered, setIsHovered] = useState(false);
+
 
   const getCategoryIcon = (category) => {
     const icons = {

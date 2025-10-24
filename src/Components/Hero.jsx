@@ -4,7 +4,6 @@ import {
   AiFillLinkedin,
   AiFillInstagram,
   AiFillTwitterSquare,
-  AiFillFacebook,
 } from "react-icons/ai";
 import Typed from "react-typed";
 import { FaDownload } from "react-icons/fa";
