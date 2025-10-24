@@ -1,35 +1,67 @@
+import React from "react";
+import { FaGraduationCap } from "react-icons/fa";
+
 const Education = () => {
   return (
-    <div
-      className="pl-5 ml-5 flex justify-center mt-5"
-      data-aos="zoom-in"
-      data-aos-duration="1000"
-    >
-      <fieldset className="w-[80%] pl-10 ml-10 mx-w-[300px] sm:w-full">
-        <legend className=" w-auto ml-[50%] translate-x-[-50%] border-2 mb-4 mt-10 border-gray-200 bg-yellow-500 rounded-3xl py-1 px-8 font-semibold text-xl text-sky-950">
-          Education
-        </legend>
-        <div className="mt-2 ml-5 pl-4 flex flex-col gap-1 sm:gap-1 border-2 border-yellow-600 shadow-[0px_0px_16px_1px_rgba(0,0,0,0.1)] p-3 rounded-lg">
-          <h1 className="text-[1.4rem] font-semibold sm:text-xl uppercase">
-            bachelor of engineering
-          </h1>
-          <span className=" text-[.9rem] font-semibold text-gray-500 sm:text-base">
-            SJBIT , Bangalore
-          </span>
-          <span className=" text-[.9rem] font-semibold text-yellow-500 sm:text-base">
-            Aug 2018 - Jul 2023
-          </span>
-          <p className=" text-[.9rem] text-justify break-words text-gray-500">
-            I pursued a Bachelor of Engineering in Information Science at SJBIT,
-            Bangalore, from August 2018 to July 2023. Throughout my studies, I
-            gained a strong foundation in programming, data structures, and
-            algorithms. Engaging in group projects and technical events enhanced
-            my teamwork, problem-solving skills, and industry awareness. This
-            education has empowered me with both technical expertise and a
-            commitment to lifelong learning..
+    <div className="max-w-4xl mx-auto">
+      <div className="bg-gray-800 rounded-2xl shadow-xl p-8 border-l-4 border-blue-500 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-700">
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-6">
+          <div className="p-3 bg-blue-500/20 rounded-full">
+            <FaGraduationCap className="text-blue-400 text-2xl" />
+          </div>
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white uppercase">
+              Bachelor of Engineering
+            </h1>
+            <p className="text-lg text-blue-400 font-semibold">Information Science</p>
+          </div>
+        </div>
+
+        {/* Details */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div>
+              <p className="text-sm text-gray-400">Institution</p>
+              <p className="text-lg font-semibold text-white">SJBIT, Bangalore</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div>
+              <p className="text-sm text-gray-400">Duration</p>
+              <p className="text-lg font-semibold text-yellow-400">Aug 2018 - Jul 2023</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div>
+              <p className="text-sm text-gray-400">CGPA</p>
+              <p className="text-lg font-semibold text-green-400">8.9 / 10</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+            <div>
+              <p className="text-sm text-gray-400">Degree</p>
+              <p className="text-lg font-semibold text-white">BE in Information Science</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Description */}
+        <div className="bg-gray-700 rounded-xl p-6 border border-gray-600">
+          <p className="text-gray-300 leading-relaxed text-lg">
+            I pursued a Bachelor of Engineering in Information Science at SJBIT, Bangalore, 
+            from August 2018 to July 2023. Throughout my studies, I gained a strong foundation 
+            in programming, data structures, and algorithms. Engaging in group projects and 
+            technical events enhanced my teamwork, problem-solving skills, and industry awareness. 
+            This education has empowered me with both technical expertise and a commitment to 
+            lifelong learning.
           </p>
         </div>
-      </fieldset>
+      </div>
     </div>
   );
 };

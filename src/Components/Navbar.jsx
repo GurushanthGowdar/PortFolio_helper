@@ -5,92 +5,121 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const MenuClickhandler = () => {
-    setMenuOpen((prev) => {
-      return !prev;
-    });
+    setMenuOpen((prev) => !prev);
   };
 
-  const resume = "resume";
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMenuOpen(false);
+  };
 
   return (
-    <div className="sticky top-0 pl-5 px-{4}  flex justify-between items-center h-20  text-white  mx-auto bg-black">
-      <h1
-        className="text-[#00df9a] font-bold text-3xl w-full uppercases cursor-pointer"
-        onClick={() => window.scrollTo(0, 0)}
-        to="/"
-      >
-        GURUSHANTHA R G
-      </h1>
-      <ul className="md:flex hidden pr-12 ">
-        <li className="p-4 text-xl">
-          <a
-            onClick={() => window.scrollTo(0, 0)}
-            className="cursor-pointer"
-            to="/"
+    <nav className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <div 
+            className="flex items-center cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            Home
-          </a>
-        </li>
-        <li className="p-4 text-xl">
-          <a href="#skill">Skills</a>
-        </li>
-        <li className="p-4 text-xl">
-          <a href="#works">Works</a>
-        </li>
-        <li className="p-4 text-xl">
-          <a href={`#${resume}`}>Resume</a>
-        </li>
-        <li className="p-4 text-xl">
-          <a href="#contact">Contact</a>
-        </li>
-      </ul>
-      {!menuOpen ? (
-        <AiOutlineMenu
-          size={30}
-          onClick={MenuClickhandler}
-          className="md:hidden cursor-pointer"
-        ></AiOutlineMenu>
-      ) : (
-        <AiOutlineClose
-          size={30}
-          onClick={MenuClickhandler}
-          className="md:hidden cursor-pointer"
-        ></AiOutlineClose>
-      )}
+            <div className="bg-gradient-to-r from-green-400 to-blue-500 w-8 h-8 rounded-full flex items-center justify-center mr-3">
+              <span className="text-black font-bold text-sm">GR</span>
+            </div>
+            <h1 className="text-white font-bold text-xl">
+              Gurushantha <span className="text-green-400">R G</span>
+            </h1>
+          </div>
 
-      <div
-        className={
-          menuOpen
-            ? "fixed pt-5 pl-5 bg-black border-r md:hidden border-r-gray-900  w-[60%] h-full  left-0 top-0 ease-in-out duration-500"
-            : "fixed left-0 top-0 pt-5 hidden"
-        }
-      >
-        <h1
-          className="text-[#00df9a] font-bold text-3xl w-full uppercase"
-          onClick={() => window.scrollTo(0, 0)}
-          to="/"
-        >
-          GURUSHANTHA R G
-        </h1>
-        <ul className="ml-5 mr-8 pt-5 bg-black">
-          <li className="p-4 pl-2 text-xl border-b-gray-700 border-b">
-            <a href="#home">Home</a>
-          </li>
-          <li className="p-4 pl-2 text-xl  border-b-gray-700 border-b">
-            <a href="#skill">Skill</a>
-          </li>
-          <li className="p-4 pl-2 text-xl border-b-gray-700 border-b">
-            <a href="#works">Works</a>
-          </li>
-          <li className="p-4 pl-2 text-xl border-b-gray-700 border-b">
-            <a href={`#${resume}`}>Resume</a>
-          </li>
-          <li className="p-4 pl-2 text-xl  border-b-gray-700 border-b">
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => scrollToSection('home')}
+              className="text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection('skill')}
+              className="text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium"
+            >
+              Skills
+            </button>
+            <button
+              onClick={() => scrollToSection('works')}
+              className="text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium"
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => scrollToSection('resume')}
+              className="text-gray-300 hover:text-green-400 transition-colors duration-300 font-medium"
+            >
+              Experience
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white px-6 py-2 rounded-full transition-all duration-300 transform hover:scale-105 font-medium"
+            >
+              Contact
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={MenuClickhandler}
+            className="md:hidden text-gray-300 hover:text-green-400 transition-colors p-2"
+            aria-label="Toggle menu"
+          >
+            {!menuOpen ? (
+              <AiOutlineMenu size={24} />
+            ) : (
+              <AiOutlineClose size={24} />
+            )}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div className={`md:hidden transition-all duration-300 ease-in-out ${
+          menuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
+        } overflow-hidden`}>
+          <div className="py-4 space-y-4 border-t border-gray-800">
+            <button
+              onClick={() => scrollToSection('home')}
+              className="block w-full text-left text-gray-300 hover:text-green-400 transition-colors duration-300 py-2 font-medium"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection('skill')}
+              className="block w-full text-left text-gray-300 hover:text-green-400 transition-colors duration-300 py-2 font-medium"
+            >
+              Skills
+            </button>
+            <button
+              onClick={() => scrollToSection('works')}
+              className="block w-full text-left text-gray-300 hover:text-green-400 transition-colors duration-300 py-2 font-medium"
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => scrollToSection('resume')}
+              className="block w-full text-left text-gray-300 hover:text-green-400 transition-colors duration-300 py-2 font-medium"
+            >
+              Experience
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="block w-full text-left text-green-400 hover:text-green-300 transition-colors duration-300 py-2 font-medium"
+            >
+              Contact
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
