@@ -2,7 +2,6 @@
   "name": "gurushantha-portfolio",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://gurushanthgowdar.github.io/PortFolio_helper",
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "aos": "^2.3.4",
