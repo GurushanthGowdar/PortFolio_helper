@@ -9,13 +9,12 @@ import Typed from "react-typed";
 import { FaDownload } from "react-icons/fa";
 import HireMeModal from "./HireMeModal";
 import ResumeCopy from "../assests/Resume/Resume.pdf";
+import ProfilePhoto from "../assests/image/photo.png"; // Import your photo
 
 const Hero = () => {
   const [isHireMeModalOpen, setIsHireMeModalOpen] = useState(false);
 
-
   return (
-   
     <div className="text-white bg-transparent pt-20 lg:pt-24" data-aos="zoom-in" data-aos-duration="1000">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -70,14 +69,6 @@ const Hero = () => {
                 <div className="text-2xl font-bold text-blue-400">30+</div>
                 <div className="text-gray-400 text-sm">Technologies</div>
               </div>
-              {/* <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-purple-400">10+</div>
-                <div className="text-gray-400 text-sm">Projects Built</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-orange-400">10B+</div>
-                <div className="text-gray-400 text-sm">Records Processed</div>
-              </div> */}
             </div>
 
             {/* CTA Buttons - Updated with your original buttons */}
@@ -95,13 +86,13 @@ const Hero = () => {
                 Know More
               </a>
               <a
-  href={ResumeCopy}
-  download="Gurushantha_R_G_Resume.pdf"
-  className="flex items-center justify-center gap-2 bg-blue-900 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
->
-  <FaDownload />
-  Resume
-</a>
+                href={ResumeCopy}
+                download="Gurushantha_R_G_Resume.pdf"
+                className="flex items-center justify-center gap-2 bg-blue-900 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition-all duration-300 transform hover:scale-105"
+              >
+                <FaDownload />
+                Resume
+              </a>
             </div>
 
             {/* Social Links - Your original social icons */}
@@ -138,24 +129,20 @@ const Hero = () => {
               >
                 <AiFillGithub size={28} />
               </a>
-              {/* <a
-                href="https://facebook.com/yourprofile"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-500 transition-colors duration-300 transform hover:scale-110"
-              >
-                <AiFillFacebook size={28} />
-              </a> */}
             </div>
           </div>
 
-          {/* Right Content - Profile Image/Graphic */}
+          {/* Right Content - Your Profile Photo */}
           <div className="flex-1 flex justify-center lg:justify-end">
             <div className="relative">
-              {/* You can add your profile picture here */}
-              <div className="w-80 h-80 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center shadow-2xl">
-                <div className="w-72 h-72 bg-gray-800 rounded-full flex items-center justify-center">
-                  <div className="text-6xl">👨‍💻</div>
+              {/* Profile Photo Container with Gradient Border */}
+              <div className="w-80 h-80 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center shadow-2xl p-2">
+                <div className="w-full h-full bg-gray-800 rounded-full flex items-center justify-center overflow-hidden border-4 border-gray-800">
+                  <img 
+                    src={ProfilePhoto} 
+                    alt="Gurushantha R G" 
+                    className="w-full h-full object-cover rounded-full"
+                  />
                 </div>
               </div>
               
@@ -190,7 +177,6 @@ const Hero = () => {
         onClose={() => setIsHireMeModalOpen(false)} 
       />
     </div>
-  
   );
 };
 
