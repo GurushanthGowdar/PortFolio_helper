@@ -1,62 +1,100 @@
 import { useState } from "react";
-import { AiFillGithub } from "react-icons/ai";
+import { AiFillGithub, AiOutlineLink } from "react-icons/ai";
+import { FaCode, FaUser, FaLaptopCode, FaMobile, FaHeartbeat } from "react-icons/fa";
 
 const WorksCard = (props) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = () => {
-    setIsHovered(true);
+  const getCategoryIcon = (category) => {
+    const icons = {
+      "Web Development": <FaLaptopCode className="text-green-400" />,
+      "Mobile Development": <FaMobile className="text-blue-400" />,
+      "Healthcare": <FaHeartbeat className="text-red-400" />
+    };
+    return icons[category] || <FaCode className="text-gray-400" />;
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
+  const getGradient = (category) => {
+    const gradients = {
+      "Web Development": "from-green-600 to-green-800",
+      "Mobile Development": "from-blue-600 to-blue-800",
+      "Healthcare": "from-red-600 to-red-800"
+    };
+    return gradients[category] || "from-gray-600 to-gray-800";
   };
 
   return (
     <div
-      className="max-w-sm rounded overflow-hidden shadow-lg bg-slate-300"
-      data-aos="zoom-in"
-      data-aos-duration="1000"
+      className="group bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 overflow-hidden border border-gray-700"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      data-aos="fade-up"
+      data-aos-delay={props.index * 100}
     >
-      <div
-        className="relative "
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <img
-          className={`w-full max-h-80  p-5 transition duration-500 cursor-pointer ${
-            isHovered ? "scale-125 blur-sm" : ""
-          }`}
-          src={props.work.image}
-          alt="Sunset in the mountains"
-        />
-        {isHovered && (
-          <div className="flex justify-center items-center absolute inset-0">
-            <AiFillGithub className="text-white mr-2" size={30} />
-            <a
-              href={props.work.gitHub}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <button className="bg-blue-500 text-white py-2 px-4 rounded-md">
-                Code
-              </button>
-            </a>
+      {/* Header with Gradient */}
+      <div className={`bg-gradient-to-r ${getGradient(props.work.category)} p-6 relative overflow-hidden`}>
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            <div className="bg-white bg-opacity-20 p-3 rounded-xl">
+              {getCategoryIcon(props.work.category)}
+            </div>
           </div>
-        )}
-      </div>
-      <div className="px-6 py-4">
-        <div className="font-bold text-xl mb-2">{props.work.name}</div>
-      </div>
-      <div className="px-6 pt-4 pb-2">
-        {props.work.tech.map((item) => (
-          <span
-            key={item}
-            className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2"
-          >
-            {`#${item}`}
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold bg-white bg-opacity-20 text-white border border-white border-opacity-30">
+            <FaUser className="text-white" />
+            Personal
           </span>
-        ))}
+        </div>
+        
+        {/* Title */}
+        <h3 className="text-xl font-bold text-white">
+          {props.work.name}
+        </h3>
+
+        {/* Abstract Background Elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6">
+        {/* Description */}
+        <p className="text-gray-300 leading-relaxed mb-4">
+          {props.work.description}
+        </p>
+
+        {/* Technologies */}
+        <div className="mb-4">
+          <div className="flex items-center gap-2 mb-3">
+            <FaCode className="text-gray-400" />
+            <span className="text-sm font-semibold text-gray-300">Built With</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {props.work.tech.map((tech, idx) => (
+              <span
+                key={idx}
+                className="inline-block bg-gray-700 text-gray-300 text-xs font-medium px-3 py-1 rounded-full border border-gray-600 hover:bg-gray-600 transition-colors"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex justify-between items-center pt-4 border-t border-gray-700">
+          <a
+            href={props.work.gitHub}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-gray-400 hover:text-white font-medium transition-all duration-300 hover:scale-105"
+          >
+            <AiFillGithub />
+            <span>View Code</span>
+          </a>
+          <span className="flex items-center gap-2 text-gray-500 font-medium">
+            <AiOutlineLink />
+            <span>Demo Soon</span>
+          </span>
+        </div>
       </div>
     </div>
   );
