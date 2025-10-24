@@ -9,7 +9,7 @@ import Typed from "react-typed";
 import { FaDownload } from "react-icons/fa";
 import HireMeModal from "./HireMeModal";
 import ResumeCopy from "../assests/Resume/Resume.pdf";
-import ProfilePhoto from "../assests/image/photo.png"; // Import your photo
+import ProfilePhoto from "../assests/images/photo.png"; // Import your photo
 
 const Hero = () => {
   const [isHireMeModalOpen, setIsHireMeModalOpen] = useState(false);
